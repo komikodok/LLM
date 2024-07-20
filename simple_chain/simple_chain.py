@@ -7,8 +7,10 @@ import os
 
 with open("config.json", "r") as f:
     config = json.load(f)
+    
+model_config = config["model"]
 
-llm = ChatOllama(model='custom-llama3')
+llm = ChatOllama(model=model_config["repo_id"])
 template = '''
             You're name is Ruby. \
             You're expert AI assistant for given a context about user question. \
