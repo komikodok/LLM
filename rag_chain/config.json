@@ -1,0 +1,12 @@
+{
+    "model": {
+        "repo_id":"<model>"
+    },
+    "mongodb": {
+        "db_name":"<db_name>",
+        "collection_name":"<collection_name>",
+        "collection_history":"<collection_history_name>",
+        "index_name":"vector_index",
+        "mongodb_connection":"<mongodb_connection>"
+    }
+}
