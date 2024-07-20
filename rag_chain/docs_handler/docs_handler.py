@@ -11,6 +11,9 @@ from pymongo import MongoClient
 with open("config.json", "r") as f:
     config = json.load(f)
 
+model_config = config["model"]
+mongodb_config = config["mongodb"]
+
 def load_knowledge(path: str):
     knowledge = path.split('.')
     if knowledge[-1] == 'txt':
@@ -32,11 +35,11 @@ def load_document(document):
     return chunks
 
 def docs2mongodb(knowledge):
-    client = MongoClient(config['mongodb']['mongodb_connection'], serverSelectionTimeoutMS=5000)
-    db_name = config['mongodb']['db_name']
-    collection_name = config['mongodb']['collection_name']
+    client = MongoClient(mongodb_config['mongodb_connection'], serverSelectionTimeoutMS=5000)
+    db_name = mongodb_config['db_name']
+    collection_name = mongodb_config['collection_name']
     collection = client[db_name][collection_name]
-    embeddings = OllamaEmbeddings(model='custom-llama3')
+    embeddings = OllamaEmbeddings(model=model_config["repo_id"])
     docs2mongodb = MongoDBAtlasVectorSearch.from_documents(documents=load_document(load_knowledge(knowledge)), embedding=embeddings, collection=collection)
     return docs2mongodb
 
