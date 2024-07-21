@@ -1,12 +1,13 @@
 {
     "model": {
-        "repo_id":"<model>"
+        "repo_id": "<model>",
+        "api_key": "<model_api_key>"
     },
     "mongodb": {
-        "db_name":"<db_name>",
-        "collection_name":"<collection_name>",
-        "collection_history":"<collection_history_name>",
-        "index_name":"vector_index",
-        "mongodb_connection":"<mongodb_connection>"
+        "db_name": "<db_name>",
+        "collection_name": "<collection_name>",
+        "collection_history": "<collection_history_name>",
+        "index_name": "vector_index",
+        "mongodb_connection": "<mongodb_connection>"
     }
 }
