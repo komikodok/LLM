@@ -25,7 +25,7 @@ prompt = ChatPromptTemplate.from_messages(
 
 chain = prompt | llm
 question = input("You: ")
-result = chain.invoke({'question': question)
+result = chain.invoke({'question': question})
 
 print(result)
 
