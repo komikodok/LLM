@@ -26,7 +26,7 @@ prompt = ChatPromptTemplate.from_messages(
 chain = prompt | llm
 chat_history = []
 
-for i in range(3):
+for i in range(2):
     question = input("You: ")
 
     result = chain.invoke({"question": question, "chat_history": chat_history})
@@ -38,7 +38,12 @@ for i in range(3):
     chat_history.append(h_message)
     chat_history.append(a_message)
 
+    print(f"AI: {answer}")
 
-    print(answer)
-
-
+# Example output:
+"""
+You: hello my name is ambatukam
+AI: hello ambatukam nice to meet you
+You: what is my name?
+AI: your name is ambatukam
+"""
