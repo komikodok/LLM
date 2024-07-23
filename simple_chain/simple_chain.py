@@ -12,7 +12,6 @@ model_config = config["model"]
 
 llm = ChatOllama(model=model_config["repo_id"])
 template = '''
-            You're name is Ruby. \
             You're expert AI assistant for answer-question task. \
             If the user question asks in Indonesian, the answer must be answered in Indonesian. \
         '''

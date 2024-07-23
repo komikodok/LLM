@@ -1,7 +1,7 @@
 {
     "model": {
-        "repo_id": "<model>",
-        "api_key": "<model_api_key>"
+        "repo_id": "<model> // use this if the model from locally",
+        "api_key": "<model_api_key> // use this if the model from api key"
     },
     "mongodb": {
         "db_name": "<db_name>",
