@@ -1,8 +1,8 @@
 from langchain_community.chat_models import ChatOllama
-from langchain_core.prompts import ChatPromptTemplate
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.messages import HumanMessage, AIMessage
 
 import json
-import os
 
 
 with open("config.json", "r") as f:
@@ -19,14 +19,27 @@ template = '''
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", template),
+        MessagesPlaceholder("chat_history"),
         ("human", "{question}")
     ]
 )
 
 chain = prompt | llm
-question = input("You: ")
-result = chain.invoke({'question': question})
+chat_history = []
 
-print(result.content)
+for i in range(3):
+    question = input("You: ")
+
+    result = chain.invoke({"question": question, "chat_history": chat_history})
+    answer = result.content
+
+    h_message = HumanMessage(content=question)
+    a_message = AIMessage(content=answer)
+    
+    chat_history.append(h_message)
+    chat_history.append(a_message)
+
+
+    print(answer)
 
 
