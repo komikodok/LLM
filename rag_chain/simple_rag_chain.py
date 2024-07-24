@@ -8,7 +8,6 @@ from langchain_core.output_parsers.json import JsonOutputParser
 from langchain_core.pydantic_v1 import Field, BaseModel
 from langchain_core.runnables import RunnablePassthrough
 
-from docs_handler import load_document, load_knowledge
 import json
 from pymongo import MongoClient
 
@@ -41,7 +40,6 @@ class Schema(BaseModel):
 parser = JsonOutputParser(pydantic_object=Schema)
 
 template = """
-            You are name is Ruby. \
             You are an assistant for question-answering tasks. \
             Use the following pieces of retrieved context to answer the question. \
             If you don't know the answer, just say that you don't know. \
@@ -71,7 +69,7 @@ rag_chain = (
     | parser
 )
 
-result = rag_chain.invoke({'question': 'apa itu arduino'})
+result = rag_chain.invoke({'question': 'what is langchain expression language?'})
 print()
 print(result)
 print(type(result))
